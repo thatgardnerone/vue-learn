@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply mx-auto h-full max-w-4xl bg-gray-900 pt-2 text-gray-100 lg:pt-12;
+    }
+
+    main {
+        @apply grid h-full items-stretch;
+    }
+
+    article {
+        @apply space-y-4;
+    }
+
+    h1 {
+        @apply mb-2 pb-2 text-4xl font-bold lg:pb-4 lg:text-6xl;
+    }
+
+    h2 {
+        @apply mb-2 pb-2 text-2xl font-bold lg:pb-4 lg:text-4xl;
+    }
+
+    h3 {
+        @apply mb-2 text-xl font-bold lg:text-2xl;
+    }
+
+    h4 {
+        @apply mb-2 text-lg font-bold lg:text-xl;
+    }
+
+    h5 {
+        @apply mb-2 text-base font-bold lg:text-lg;
+    }
+
+    h6 {
+        @apply mb-2 text-sm font-bold text-gray-300 lg:text-base;
+    }
+
+    input {
+        @apply rounded-md bg-gray-100 px-4 py-2 text-gray-700 focus:ring-1 focus:ring-gray-200;
+    }
+
+    input[type="checkbox"] {
+        @apply h-5 w-5 rounded border-gray-600 bg-gray-700 text-blue-600 ring-offset-gray-800 focus:ring-2 focus:ring-blue-600;
+    }
+
+    li {
+        @apply mb-4;
+    }
+
+    pre {
+        @apply my-3 overflow-x-auto rounded bg-gray-700 p-1.5 text-sm text-gray-100;
+    }
+
+    pre code.torchlight {
+        @apply block py-4 min-w-max;
+    }
+
+    pre code.torchlight .line {
+        @apply px-4;
+    }
+
+    pre code.torchlight .line-number,
+    pre code.torchlight .summary-caret {
+        @apply mr-4;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply rounded-md px-4 py-2 text-white focus:ring-1 focus:ring-gray-200;
+    }
+
+    .btn-primary {
+        @apply bg-blue-500 hover:bg-blue-600 active:bg-blue-700;
+    }
+
+    .btn-secondary {
+        @apply bg-gray-500 hover:bg-gray-600 active:bg-gray-700;
+    }
+
+    .section {
+        @apply space-y-4 rounded-md bg-gray-800 px-8 py-8;
+    }
+}

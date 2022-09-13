@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite App</title>
+        <script src="https://unpkg.com/vue@3"></script>
+        <link rel="stylesheet" href="src/index.css" />
+    </head>
+    <body>
+        <main id="app">
+            <article>
+                <h1>Section 1: Getting Started</h1>
+
+                <div id="lesson1" class="section">
+                    <h2>Lesson 1: Absolute Basics</h2>
+
+                    <div>
+                        <label
+                            class="mb-1 block font-bold text-gray-300"
+                            for="msg"
+                            >Enter text:
+                        </label>
+                        <input type="text" name="msg" id="msg" v-model="msg" />
+                    </div>
+
+                    <div>
+                        <h6>Output:</h6>
+                        <pre>{{ msg }} ({{ msg.length }})</pre>
+                    </div>
+                </div>
+
+                <div id="lesson2" class="section">
+                    <h2>Lesson 2: Attribute Binding and Event Handling</h2>
+                    <button
+                        :class="[ active ? 'btn-primary' : 'btn-secondary']"
+                        class="btn"
+                        @click="toggle">
+                        Click me
+                    </button>
+                </div>
+
+                <div id="lesson3" class="section">
+                    <h2>
+                        Lesson 3: Lists, Conditionals, and Computed Properties
+                    </h2>
+
+                    <div class="grid grid-cols-2 justify-items-stretch gap-3">
+                        <div>
+                            <div>
+                                <h3 v-show="incompleteItems.length != 0">Todo</h3>
+                                <ul class="mx-auto my-auto">
+                                    <li v-for="item in incompleteItems" :key="item.id">
+                                        <label
+                                            :for="item.id"
+                                            class="flex items-center rounded bg-gray-700 px-2.5 py-4 text-sm font-medium text-gray-300 hover:bg-gray-600">
+                                            <input
+                                                class="mr-2"
+                                                type="checkbox"
+                                                v-model="item.complete"
+                                                :checked="item.complete"
+                                                :name="item.name"
+                                                :id="item.id" />
+                                            {{ item.name }}
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 v-show="completedItems.length != 0">Completed</h3>
+                                <ul class="mx-auto my-auto">
+                                    <li v-for="item in completedItems" :key="item.id">
+                                        <label
+                                            :for="item.id"
+                                            class="flex items-center rounded bg-gray-700 px-2.5 py-4 text-sm font-medium text-gray-300 hover:bg-gray-600">
+                                            <input
+                                                class="mr-2"
+                                                type="checkbox"
+                                                v-model="item.complete"
+                                                :checked="item.complete"
+                                                :name="item.name"
+                                                :id="item.id" />
+                                            {{ item.name }}
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <pre>{{ items }}</pre>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <script>
+            const app = {
+                computed: {
+                    completedItems() {
+                        return this.items.filter((item) => item.complete);
+                    },
+                    incompleteItems() {
+                        return this.items.filter((item) => !item.complete);
+                    },
+                },
+
+                data() {
+                    return {
+                        msg: "Hello World!",
+                        active: true,
+                        items: [
+                            { id: 1, name: "Item 1", complete: true },
+                            { id: 2, name: "Item 2", complete: false },
+                            { id: 3, name: "Item 3", complete: false },
+                            { id: 4, name: "Item 4", complete: false },
+                            { id: 5, name: "Item 5", complete: false },
+                        ],
+                    };
+                },
+
+                methods: {
+                    toggle() {
+                        this.active = !this.active;
+                    },
+                },
+
+                mounted() {
+                    setTimeout(() => {
+                        this.msg = "Hello Vite!";
+                    }, 2000);
+                },
+            };
+
+            Vue.createApp(app).mount("#app");
+        </script>
+    </body>
+</html>
